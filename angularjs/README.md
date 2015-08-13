@@ -37,3 +37,9 @@ app.controller('GraphController', function() {
     ];
 });
 ```
+
+# Directives
+## Built-in
+### ngShow and ngHide
+When using `$scope.variable` for `ng-show` and `ng-hide`, please access the variable through a **getter method** to avoid 
+ call `$scope.$apply();`

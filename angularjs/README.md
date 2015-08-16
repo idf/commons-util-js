@@ -43,3 +43,5 @@ app.controller('GraphController', function() {
 ### ngShow and ngHide
 When using `$scope.variable` for `ng-show` and `ng-hide`, please access the variable through a **getter method** to avoid 
  call `$scope.$apply();`
+ 
+You can also use `data-ng-click`, `data-ng-show`. 

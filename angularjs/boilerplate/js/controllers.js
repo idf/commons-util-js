@@ -31,6 +31,7 @@
   }]);
 
   app.factory('dataService', ["$http", "$rootScope", function($http, $rootScope) {
+    // service uses this or vm. 
     var sharedService = {};
     sharedService.prepForBroadcast = prepForBroadcast;
 

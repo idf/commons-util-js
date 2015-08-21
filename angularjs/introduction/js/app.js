@@ -12,8 +12,14 @@
         /* Shared Modules */
         'filters',
 
-        /* Feature ares */
+        /* 3rd party */
+
+        /* Function Modules */
         'app.controllers',
         'app.directives'
-    ]);
+
+    ]).config(['$interpolateProvider', function($interpolateProvider) {
+      $interpolateProvider.startSymbol('{{');  // default
+      $interpolateProvider.endSymbol('}}');
+    }]);
 })();

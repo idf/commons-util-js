@@ -12,7 +12,9 @@
     /* Shared Modules */
     'filters',
 
-    /* Feature areas */
+    /* 3rd Party Modules */
+
+    /* App Modules */
     'app.controllers',
     'app.directives'
   ]);

@@ -5,7 +5,7 @@
   "use strict";
   /**
    * Module
-   * Module dependencies: 'store-directives'
+   * Module dependencies: 'app.directives'
    * @type {module}
    */
   var app = angular.module('app.controllers', []);
@@ -31,7 +31,7 @@
   }]);
 
   app.factory('dataService', ["$http", "$rootScope", function($http, $rootScope) {
-    // service uses this or vm. 
+    // service does not this or vm.
     var sharedService = {};
     sharedService.prepForBroadcast = prepForBroadcast;
 

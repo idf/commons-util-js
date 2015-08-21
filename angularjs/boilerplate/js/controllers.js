@@ -14,20 +14,27 @@
    * Data load controller
    * Dependency Injection $http
    */
-  app.controller('mainController', ["$http", "$scope", "dataService", function($http, $scope, dataSvr){
+  app.controller('mainController', ["$http", "$scope", "dataService", function($http, $scope, dataSrv){
     var vm = this;
     // attribute
-    vm.keywords = null;
+    vm.field = null;
 
     // functions
     vm.tag = tag;
 
     function tag() {
-      dataSvr.prepForBroadcast(vm.text);
+      dataSrv.prepForBroadcast("POST", "/", vm.text);
       $scope.$on('dataReady', function() {
-        vm.keywords = dataSvr.msg["keywords"];
+        vm.field = dataSrv.msg["attr"];
       });
     }
+
+    $scope.$watch(function() {
+      return vm.field;
+    }, function(newValue, oldValue) {
+      // do something
+    }, true);
+
   }]);
 
   app.factory('dataService', ["$http", "$rootScope", function($http, $rootScope) {
@@ -35,12 +42,12 @@
     var sharedService = {};
     sharedService.prepForBroadcast = prepForBroadcast;
 
-    function prepForBroadcast(str) {
+    function prepForBroadcast(method, url, data) {
       $rootScope.$broadcast('prepForBroadcast');
       $http({
-        method: 'POST',
-        url: '/',
-        data: {text: str}
+        method: method,
+        url: url,
+        data: data
       }).success(function(data) {
         sharedService.msg = data;
         $rootScope.$broadcast('dataReady');

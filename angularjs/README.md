@@ -1,4 +1,5 @@
-##controllerAs View Syntax
+# HTML
+### controllerAs View Syntax
 Use the controllerAs syntax over the classic controller with $scope syntax.
 
 $scope
@@ -37,6 +38,24 @@ app.controller('GraphController', function() {
     ];
 });
 ```
+### Multiple ngControllers
+Use two levels of <div>
+
+To bind 2 models to one input field - ngChange (only works for changes):
+```html
+<input type="text" 
+       ng-model="sn_number" 
+       ng-change="id=sn_number"/> 
+```
+
+### ngBind ngModel
+**ng-bind** has one-way data binding ($scope --> view). It has a shortcut {{ val }} which displays the scope value 
+$scope.val inserted into html where val is a variable name.
+
+**ng-model** is intended to be put inside of form elements and has two-way data binding ($scope --> view and view --> 
+$scope) e.g. <input ng-model="val"/>.
+
+
 
 # Directives
 ## Built-in

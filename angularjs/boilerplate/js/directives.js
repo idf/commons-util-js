@@ -1,7 +1,8 @@
 /**
  * Created by Daniel on 13/08/15.
  *
- * For DOM manipulation, use directives. View is the "official record".
+ * For DOM manipulation, use directives - View is the "official record".
+ * Directive is the extension of HTML (part of HTML)
  */
 (function() {
   'use strict';
@@ -21,13 +22,20 @@
   app.directive('confirmClick', function() {
     return {
       restrict: 'A',
+      /**
+       * link declares the controllers specifically for this directieve
+       * @param scope, controller's scope
+       * @param elt, the entire the HTML tag
+       * @param attrs, the attributes of the HTML
+       */
       link: function(scope, elt, attrs) {
         elt.bind('click', function(e) {
           var message = attrs.confirmation || 'Are you sure you want to do this?';
           if (window.confirm(message)) {
-            var action = attrs.confirmClick;
-            if (action)
+            var action = attrs.confirmClick;  // binding the 'confirm-click' attribute
+            if (action) {
               scope.$apply(scope.$eval(action));
+            }
           }
         });
       }
@@ -62,5 +70,21 @@
     };
   }]);
 
+
+  /**
+   * A controller dedicated to a directive
+   */
+  app.directive( 'toggle', function () {
+    return {
+      scope: true,
+      template: '<a class="btn" ng‐class="{active: on}" ng‐click="toggle()">Toggle me! </a>',
+      link: function ( scope, elt, attrs ) {
+        scope.on = false;
+        scope.toggle = function () {
+          scope.on = !scope.on;
+        };
+      }
+    };
+  });
 
 })();

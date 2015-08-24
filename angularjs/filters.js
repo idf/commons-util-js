@@ -1,7 +1,7 @@
 /**
  * Created by Danyang on 2/4/2015.
  */
-(function(){
+(function() {
   'use strict';
   var app = angular.module('filters', []);
 

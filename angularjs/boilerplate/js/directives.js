@@ -1,5 +1,7 @@
 /**
  * Created by Daniel on 13/08/15.
+ *
+ * For DOM manipulation, use directives. View is the "official record".
  */
 (function() {
   'use strict';
@@ -31,6 +33,34 @@
       }
     };
   });
+
+  /**
+   * ^: Locate the required controller by searching the element and its parents. Throw an error if not found.
+   * https://code.angularjs.org/1.3.0/docs/api/ng/service/$compile#-require-
+   */
+  app.directive('pagination', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'pagination.html',
+      require: '^searchCtrl'
+    };
+  });
+
+  function getDirectiveDir(rootDir) {
+    return rootDir+'path/to/snippets/';
+  }
+
+  /**
+   * rootDir is the app's constant
+   */
+  app.directive('searchResult', ['rootDir', function(rootDir) {
+    return {
+      restrict: 'E',
+      templateUrl: getDirectiveDir(rootDir)+'search_result.html',
+      require: '^Controller',
+      controllerAs: 'ctrl'
+    };
+  }]);
 
 
 })();

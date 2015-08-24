@@ -2,7 +2,7 @@
  * Created by Daniel on 13/08/15.
  */
 (function() {
-  "use strict";
+  'use strict';
   /**
    * Module
    * Module dependencies: 'app.directives'
@@ -14,7 +14,7 @@
    * Data load controller
    * Dependency Injection $http
    */
-  app.controller('mainController', ["$http", "$scope", "dataService", function($http, $scope, dataSrv){
+  app.controller('mainController', ['$http', '$scope', 'dataService', function($http, $scope, dataSrv){
     var vm = this;
     // attribute
     vm.field = null;
@@ -23,9 +23,9 @@
     vm.tag = tag;
 
     function tag() {
-      dataSrv.prepForBroadcast("POST", "/", vm.text);
+      dataSrv.prepForBroadcast('POST', '/', vm.text);
       $scope.$on('dataReady', function() {
-        vm.field = dataSrv.msg["attr"];
+        vm.field = dataSrv.msg['attr'];
       });
     }
 
@@ -37,7 +37,7 @@
 
   }]);
 
-  app.factory('dataService', ["$http", "$rootScope", function($http, $rootScope) {
+  app.factory('dataService', ['$http', '$rootScope', function($http, $rootScope) {
     // service does not this or vm.
     var sharedService = {};
     sharedService.prepForBroadcast = prepForBroadcast;

@@ -2,7 +2,7 @@
  * Created by Daniel on 13/08/15.
  */
 (function() {
-  "use strict";
+  'use strict';
   /**
    * Module
    * Module dependencies: ''

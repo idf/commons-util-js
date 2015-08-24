@@ -4,18 +4,18 @@
 (function() {
   'use strict';
 
-  var app = angular.module("oauth-services", []);
+  var app = angular.module('oauth-services', []);
 
   /**
    * Interface to oauth.io
 
    Usage:
    // Initialize
-   oauthService.initialize("instagram");
+   oauthService.initialize('instagram');
 
    // Auth
    if(oauthService.isReady()) {loc2geocode(query, true);}
-   else {oauthService.connect("instagram").then(function () {...});}
+   else {oauthService.connect('instagram').then(function () {...});}
 
    // Get Token
    oauthService.getAccessToken()
@@ -39,7 +39,7 @@
             oauthService = result;
             deferred.resolve();
           } else {
-            console.log("error in oauth");
+            console.log('error in oauth');
             console.log(error);
           }
         });

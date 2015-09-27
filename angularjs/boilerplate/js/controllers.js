@@ -20,9 +20,9 @@
     vm.field = null;
 
     // functions
-    vm.tag = tag;
+    vm.fetch = fetch;
 
-    function tag() {
+    function fetch() {
       dataSrv.prepForBroadcast('POST', '/', vm.text);
       $scope.$on('dataReady', function() {
         vm.field = dataSrv.msg['attr'];

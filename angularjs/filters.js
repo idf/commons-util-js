@@ -37,6 +37,9 @@
 
   app.filter('numberWithComma', function() {
     return function(number) {
+      if (number === null) {
+        return "";
+      }
       var text = String(number);
       return text.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     };
